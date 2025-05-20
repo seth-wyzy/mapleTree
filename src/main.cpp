@@ -1,4 +1,5 @@
 #include <SDL2/SDL_events.h>
+#include <SDL2/SDL_render.h>
 #include <iostream>
 #include "raster.h"
 #include <SDL2/SDL.h>
@@ -32,11 +33,13 @@ int main(int argc, char* args[]) {
             } 
         }
     point p1 = {0,0};
-    point p2 = {100,100};
-    point p3 = {300, 250};
-    point p4 = {100, 200};
-
-    ras.drawWireTriangle(p2, p3, p4, {255,255,255}, ren);
+    point p2 = {100,100, 1};
+    point p3 = {300, 250, 0.5};
+    point p4 = {150, 200,0.25};
+    SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
+    SDL_RenderClear(ren);
+    // ras.drawWireTriangle(p2, p3, p4, {255,255,255}, ren);
+    ras.fillInTriangle(p2, p3, p4, {255,0,0}, ren);
 
     SDL_RenderPresent(ren);
 
