@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/maple.dir/main.cpp.o"
   "CMakeFiles/maple.dir/main.cpp.o.d"
+  "CMakeFiles/maple.dir/raster.cpp.o"
+  "CMakeFiles/maple.dir/raster.cpp.o.d"
   "maple"
   "maple.pdb"
 )

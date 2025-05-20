@@ -153,6 +153,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/maple.dir/build.make CMakeFiles/maple.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+raster.o: raster.cpp.o
+.PHONY : raster.o
+
+# target to build an object file
+raster.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/maple.dir/build.make CMakeFiles/maple.dir/raster.cpp.o
+.PHONY : raster.cpp.o
+
+raster.i: raster.cpp.i
+.PHONY : raster.i
+
+# target to preprocess a source file
+raster.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/maple.dir/build.make CMakeFiles/maple.dir/raster.cpp.i
+.PHONY : raster.cpp.i
+
+raster.s: raster.cpp.s
+.PHONY : raster.s
+
+# target to generate assembly for a file
+raster.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/maple.dir/build.make CMakeFiles/maple.dir/raster.cpp.s
+.PHONY : raster.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -165,6 +189,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... raster.o"
+	@echo "... raster.i"
+	@echo "... raster.s"
 .PHONY : help
 
 

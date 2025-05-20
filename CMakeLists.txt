@@ -6,6 +6,7 @@ find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
 add_executable(maple src/main.cpp 
+                     src/raster.cpp
                           )
 
 target_link_libraries(maple ${SDL2_LIBRARIES})
