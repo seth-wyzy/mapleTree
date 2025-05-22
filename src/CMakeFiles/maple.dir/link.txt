@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/maple.dir/main.cpp.o CMakeFiles/maple.dir/raster.cpp.o -o maple  /usr/lib/x86_64-linux-gnu/libSDL2.so 
