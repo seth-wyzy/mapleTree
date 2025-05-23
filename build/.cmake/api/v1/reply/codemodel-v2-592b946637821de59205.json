@@ -6,6 +6,7 @@
 			[
 				{
 					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.10"
@@ -38,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "maple::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-maple-Debug-25970988b1d89653ac7f.json",
+					"jsonFile" : "target-maple-Debug-6594704bd4085a22ce3f.json",
 					"name" : "maple",
 					"projectIndex" : 0
 				}
@@ -54,6 +55,6 @@
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 0
+		"minor" : 3
 	}
 }

@@ -1,12 +1,17 @@
 [
 {
   "directory": "/home/seth/projects/mapleTree/build",
-  "command": "/usr/bin/g++   -I/usr/include/SDL2  -g   -std=gnu++17 -o CMakeFiles/maple.dir/src/main.cpp.o -c /home/seth/projects/mapleTree/src/main.cpp",
+  "command": "/usr/bin/g++  -I/usr/include/SDL2 -g -o CMakeFiles/maple.dir/src/main.cpp.o -c /home/seth/projects/mapleTree/src/main.cpp",
   "file": "/home/seth/projects/mapleTree/src/main.cpp"
 },
 {
   "directory": "/home/seth/projects/mapleTree/build",
-  "command": "/usr/bin/g++   -I/usr/include/SDL2  -g   -std=gnu++17 -o CMakeFiles/maple.dir/src/raster.cpp.o -c /home/seth/projects/mapleTree/src/raster.cpp",
+  "command": "/usr/bin/g++  -I/usr/include/SDL2 -g -o CMakeFiles/maple.dir/src/raster.cpp.o -c /home/seth/projects/mapleTree/src/raster.cpp",
   "file": "/home/seth/projects/mapleTree/src/raster.cpp"
+},
+{
+  "directory": "/home/seth/projects/mapleTree/build",
+  "command": "/usr/bin/g++  -I/usr/include/SDL2 -g -o CMakeFiles/maple.dir/src/camera.cpp.o -c /home/seth/projects/mapleTree/src/camera.cpp",
+  "file": "/home/seth/projects/mapleTree/src/camera.cpp"
 }
 ]

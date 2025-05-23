@@ -1,17 +1,16 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
   )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/seth/projects/mapleTree/src/main.cpp" "/home/seth/projects/mapleTree/build/CMakeFiles/maple.dir/src/main.cpp.o"
-  "/home/seth/projects/mapleTree/src/raster.cpp" "/home/seth/projects/mapleTree/build/CMakeFiles/maple.dir/src/raster.cpp.o"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/include/SDL2"
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/seth/projects/mapleTree/src/camera.cpp" "CMakeFiles/maple.dir/src/camera.cpp.o" "gcc" "CMakeFiles/maple.dir/src/camera.cpp.o.d"
+  "/home/seth/projects/mapleTree/src/main.cpp" "CMakeFiles/maple.dir/src/main.cpp.o" "gcc" "CMakeFiles/maple.dir/src/main.cpp.o.d"
+  "/home/seth/projects/mapleTree/src/raster.cpp" "CMakeFiles/maple.dir/src/raster.cpp.o" "gcc" "CMakeFiles/maple.dir/src/raster.cpp.o.d"
   )
 
 # Targets to which this target links.
