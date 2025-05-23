@@ -1,0 +1,11 @@
+{
+    "editor.cursorSmoothCaretAnimation" : "on",
+    "editor.cursorBlinking": "expand",
+    "editor.overviewRulerBorder": false,
+    "editor.showFoldingControls" :"mouseover",
+    "editor.renderWhitespace": "none",
+    "editor.fontFamily": "Input Mono, SFMono-UltraLight, SourceCodePro-Light, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontWeight": "200",
+    "window.titleBarStyle":"custom",
+    "editor.quickSuggestionsDelay": 0,
+}

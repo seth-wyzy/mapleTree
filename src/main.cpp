@@ -2,10 +2,10 @@
 #include <SDL2/SDL_render.h>
 #include <iostream>
 #include "raster.h"
+#include "camera.h"
 #include <SDL2/SDL.h>
 
-#define WIDTH_SCREEN 600
-#define HEIGHT_SCREEN 480
+
 
 bool start();
 void close();
@@ -20,11 +20,12 @@ int main(int argc, char* args[]) {
         std::cerr << "Initilization ERROR\n";
         return 1;  
     } 
-
+    // Initillize stuff
     SDL_Event e;
     bool quit = false;
-
+  
     Raster ras;
+    camera cam {0,0,0};
 
     while (!quit) {
         while (SDL_PollEvent(&e)) {
@@ -32,20 +33,60 @@ int main(int argc, char* args[]) {
                 quit = true;
             } 
         }
-    point p1 = {0,0};
-    point p2 = {100,100, 1};
-    point p3 = {300, 250, 0.5};
-    point p4 = {150, 200,0.25};
+    // just some test points for the triangles
+    // point p1 = {0,0}; //FIXME: Note that order has changed to x,y,z,h these points are in x,y,h,z
+    // point p2 = {100,100, 1};
+    // point p3 = {0, 0, 0.5};
+    // point p4 = {-150, 200,0.25};
+        // TODO: Note that this is for the shaded triangle
+    // SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
+    // SDL_RenderClear(ren);
+    // // ras.drawWireTriangle(p2, p3, p4, {255,255,255}, ren);
+    // ras.fillInTriangle(p2, p3, p4, {255,0,0}, ren);
+    // SDL_RenderPresent(ren);
+    
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
-    // ras.drawWireTriangle(p2, p3, p4, {255,255,255}, ren);
-    ras.fillInTriangle(p2, p3, p4, {255,0,0}, ren);
+    
 
+    // This is for the (theoretical) cube
+    // front
+    point vAf {-2, -0.5, 5};
+    point vBf {-2, 0.5, 5};
+    point vCf {-1,0.5, 5};
+    point vDf {-1, -0.5, 5};
+
+    // back 
+    point vAb {-2, -0.5, 6};
+    point vBb {-2, 0.5, 6};
+    point vCb {-1,0.5, 6};
+    point vDb {-1, -0.5, 6};
+
+    //front 
+    ras.drawLine(ras.projectVertex(vAf), ras.projectVertex(vBf), {0,0,255}, ren);
+    ras.drawLine(ras.projectVertex(vBf), ras.projectVertex(vCf), {0,0,255}, ren);
+    ras.drawLine(ras.projectVertex(vCf), ras.projectVertex(vDf), {0,0,255}, ren);
+    ras.drawLine(ras.projectVertex(vDf), ras.projectVertex(vAf), {0,0,255}, ren);
+
+    // back
+    ras.drawLine(ras.projectVertex(vAb), ras.projectVertex(vBb), {255,0,0}, ren);
+    ras.drawLine(ras.projectVertex(vBb), ras.projectVertex(vCb), {255,0,0}, ren);
+    ras.drawLine(ras.projectVertex(vCb), ras.projectVertex(vDb), {255,0,0}, ren);
+    ras.drawLine(ras.projectVertex(vDb), ras.projectVertex(vAb), {255,0,0}, ren);
+
+    // connection
+    ras.drawLine(ras.projectVertex(vAf), ras.projectVertex(vAb), {0,255,0}, ren);
+    ras.drawLine(ras.projectVertex(vBf), ras.projectVertex(vBb), {0,255,0}, ren);
+    ras.drawLine(ras.projectVertex(vCf), ras.projectVertex(vCb), {0,255,0}, ren);
+    ras.drawLine(ras.projectVertex(vDf), ras.projectVertex(vDb), {0,255,0}, ren);
+    
     SDL_RenderPresent(ren);
 
+
+    
     }
 }
-
+//TODO: Figure out out camera stuff
 
 
 

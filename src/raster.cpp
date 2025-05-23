@@ -12,6 +12,15 @@ std::vector<T> concat_vectors(const std::vector<T>& a, const std::vector<T>& b) 
     return result;
 }
 
+point Raster::toScreenCords(const point& p) {
+    return {
+        static_cast<int>(p.x + WIDTH_SCREEN/2),
+        static_cast<int>(-p.y + HEIGHT_SCREEN/2),
+        p.z,
+        p.h
+    };
+}
+
 
 
 // a = y1 - y0) / (x1-x0) (also known as slope)
@@ -21,6 +30,8 @@ std::vector<T> concat_vectors(const std::vector<T>& a, const std::vector<T>& b) 
 
 
 void Raster::drawLine(point start, point end, std::vector<int> color, SDL_Renderer* ren){
+    start = toScreenCords(start);
+    end = toScreenCords(end);
     // make sure that start.x is less than end.x
     SDL_SetRenderDrawColor(ren, color[0], color[1], color[2], 255);
     if (abs(end.x - start.x) > abs(end.y - start.y)) { // for more H line
@@ -69,6 +80,9 @@ void Raster::swap(point &x, point &y) {
 }
 
 void Raster::fillInTriangle(point p0, point p1, point p2, std::vector<int> color, SDL_Renderer *ren) {
+    p0 = toScreenCords(p0);
+    p1 = toScreenCords(p1);
+    p2 = toScreenCords(p2);
 
     if (p1.y < p0.y) swap(p1, p0);
     if (p2.y < p0.y) swap(p2, p0);
@@ -89,10 +103,10 @@ void Raster::fillInTriangle(point p0, point p1, point p2, std::vector<int> color
     std::vector<double> x012 = concat_vectors(x01, x12);
     std::vector<double> h012 = concat_vectors(h01, h12);
 
-    // Left vs Right
+    // Left vs Right i feel like this color is fine, it draws your eye, but not like too much
     std::vector<double> x_left;
     std::vector<double> h_left;
-    std::vector<double> x_right;
+    std::vector<double> x_right; 
     std::vector<double> h_right;
     int m = floor(x012.size()/ 2);
     if (x02[m] < x012[m]) {
@@ -117,7 +131,23 @@ void Raster::fillInTriangle(point p0, point p1, point p2, std::vector<int> color
     }
 }
 
+point Raster::viewportToCanvas(const point& p){
+    return {
+        p.x* WIDTH_SCREEN / VIEWPORT_WIDTH, 
+        p.y*HEIGHT_SCREEN / VIEWPORT_HEIGHT,
+        p.z,
+        p.h
+    };
+}
+
+point Raster::projectVertex(const point& p) {
+    return {
+        viewportToCanvas({p.x*VIEWPORT_DEPTH/p.z, p.y*VIEWPORT_DEPTH/ p.z })
+    };
+}
 
 
 
 
+
+// this is a test comment
