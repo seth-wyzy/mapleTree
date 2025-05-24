@@ -70,5 +70,8 @@ void cube::scale(const std::array<double, 3> t) {
         poi.z *= t[2];
     }
 }
+void cube::rotate(const double degrees) {
+    return;
+}
 
 //TODO: Implement rotate 

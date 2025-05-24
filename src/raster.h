@@ -34,7 +34,9 @@ public:
         // like as part of their struct, or just creating like another struct of an instnace and using that
     // once render scene function is created, update scene can be created by transforming everything and then using that 
     // also should be storing every element that is in a scene in a vector 
-    void renderScene(std::vector<cube> scene);
+    void renderScene(std::vector<cube> scene, SDL_Renderer* ren);
+    void updateObj(cube cub, std::array<double, 3> transform = {0,0,0}, double rotate = 0, std::array<double, 3> scale = {0,0,0});
+    void updateScene(std::vector<cube> scene, SDL_Renderer* ren, std::array<double, 3> transform = {0,0,0}, double rotate = 0, std::array<double, 3> scale = {0,0,0});
 
 };
 

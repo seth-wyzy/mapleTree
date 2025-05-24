@@ -166,7 +166,23 @@ void Raster::renderTriangle(triangle t, std::vector<point> proj, SDL_Renderer* r
     drawWireTriangle(p0, p1, p2, t.color, ren);
 }
 
-void renderScene
+void Raster::renderScene(std::vector<cube> scene, SDL_Renderer* ren) {
+    for (const auto& cube: scene) {
+        renderObject(cube.verticies, cube.tri, ren);
+    }
+}
+void Raster::updateObj(cube cub, std::array<double, 3> transform, double rotate, std::array<double, 3> scale){
+    cub.transform(transform);
+    cub.rotate(rotate);
+    cub.scale(scale);
+}
+
+void Raster::updateScene(std::vector<cube> scene, SDL_Renderer* ren , std::array<double, 3> transform, double rotate, std::array<double, 3> scale) {
+    for (auto& it: scene) {
+        updateObj(it,transform, rotate, scale );
+    }
+    renderScene(scene, ren);
+}
 
 
 
