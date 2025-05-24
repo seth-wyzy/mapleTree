@@ -1,6 +1,6 @@
 #include "objects.h"
 
-cube::cube() {
+cube::cube(double x, double y, double z, double x_scale, double y_scale, double z_scale, double rotation) {
     verticies.resize(8);
     tri.resize(12);
 
@@ -50,8 +50,9 @@ cube::cube() {
     // tri[10]= {2, 6, 7, {255,0,0}};
     // tri[11]= {2, 6, 7, {255,0,0}};
 
-
-
+    transform({x,y,z});
+    scale({x_scale, y_scale, z_scale});
+    rotate(rotation);
 }
 
 

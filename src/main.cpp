@@ -88,17 +88,12 @@ int main(int argc, char* args[]) {
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
 
-    cube cube1;
-    cube cube2;
-    std::array<double, 3> tVec = {-1.5, 0,7};
-    std::array<double, 3> scale1 = {1,2,1};
-    std::array<double, 3> trans1 = {1, 1.2, 9};
-    cube1.scale(scale1);
-    cube1.transform(tVec); 
-    cube2.transform(trans1);
-    ras.renderObject(cube1.verticies, cube1.tri, ren);
-    ras.renderObject(cube2.verticies, cube2.tri, ren);
-
+    cube cube1(-1.5, 0, 7,1,1,1,0);
+    cube cube2(1,1.2, 9,1,1,1,0);
+    objects obj;
+    obj.scene.push_back(cube1);
+    obj.scene.push_back(cube2);
+    ras.renderScene(obj.scene, ren);
 
     SDL_RenderPresent(ren);
     
