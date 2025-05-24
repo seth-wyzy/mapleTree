@@ -2,6 +2,8 @@
 #define RASTER
 #include <vector>
 #include <SDL2/SDL.h>
+#include "objects.h"
+
 
 
 #define WIDTH_SCREEN 1200
@@ -11,11 +13,7 @@
 #define VIEWPORT_DEPTH 1
 #define DISTANCE 1
 
-struct point {
-    double x,y;
-    int z = 1;
-    float h = 1;
-};
+
 
 class Raster {
 public: 
@@ -29,6 +27,14 @@ public:
     point toScreenCords(const point& p);
     point viewportToCanvas(const point& p);
     point projectVertex(const point& p);
+    void renderTriangle(triangle t, std::vector<point> proj,SDL_Renderer* ren);
+    void renderObject(std::vector<point> verticies, std::vector<triangle> triangle,SDL_Renderer* ren);
+    //TODO: Create Render Scene Function
+        // should be pretty easy, like just a for loop to itterate over a scene, and each cube could have like elements to transform
+        // like as part of their struct, or just creating like another struct of an instnace and using that
+    // once render scene function is created, update scene can be created by transforming everything and then using that 
+    // also should be storing every element that is in a scene in a vector 
+    void renderScene(std::vector<cube> scene);
 
 };
 

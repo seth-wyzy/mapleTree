@@ -1,11 +1,12 @@
 #include "raster.h"
+#include "objects.h"
 #include <SDL2/SDL_render.h>
 #include <vector>
 
 
 template<typename T>
 std::vector<T> concat_vectors(const std::vector<T>& a, const std::vector<T>& b) {
-    std::vector<T> result;
+    std::vector<T> result; 
     result.reserve(a.size() + b.size());  
     result.insert(result.end(), a.begin(), a.end());
     result.insert(result.end(), b.begin(), b.end());
@@ -14,12 +15,13 @@ std::vector<T> concat_vectors(const std::vector<T>& a, const std::vector<T>& b) 
 
 point Raster::toScreenCords(const point& p) {
     return {
-        static_cast<int>(p.x + WIDTH_SCREEN/2),
-        static_cast<int>(-p.y + HEIGHT_SCREEN/2),
+        p.x + WIDTH_SCREEN/2.0,
+        -p.y + HEIGHT_SCREEN/2.0,
         p.z,
         p.h
     };
 }
+
 
 
 
@@ -146,6 +148,25 @@ point Raster::projectVertex(const point& p) {
     };
 }
 
+
+void Raster::renderObject(std::vector<point> verticies , std::vector<triangle> tri, SDL_Renderer* ren) {
+    std::vector<point> projected;
+    for (const auto& it: verticies) {
+        projected.push_back(projectVertex(it));
+    }
+    for (const auto& it: tri) {
+        renderTriangle(it, projected, ren);
+    }
+}
+
+void Raster::renderTriangle(triangle t, std::vector<point> proj, SDL_Renderer* ren){
+    const point& p0 = proj[t.verts[0]];
+    const point& p1 = proj[t.verts[1]];
+    const point& p2 = proj[t.verts[2]];
+    drawWireTriangle(p0, p1, p2, t.color, ren);
+}
+
+void renderScene
 
 
 

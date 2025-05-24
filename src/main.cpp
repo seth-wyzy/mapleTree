@@ -4,6 +4,8 @@
 #include "raster.h"
 #include "camera.h"
 #include <SDL2/SDL.h>
+#include <vector>
+#include "objects.h"
 
 
 
@@ -45,43 +47,61 @@ int main(int argc, char* args[]) {
     // ras.fillInTriangle(p2, p3, p4, {255,0,0}, ren);
     // SDL_RenderPresent(ren);
     
+    // SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
+    // SDL_RenderClear(ren);
+
+
+    // // This is for the (theoretical) cube
+    // // front
+    // point vAf {-2, -0.5, 5};
+    // point vBf {-2, 0.5, 5};
+    // point vCf {-1,0.5, 5};
+    // point vDf {-1, -0.5, 5};
+
+    // // back 
+    // point vAb {-2, -0.5, 6};
+    // point vBb {-2, 0.5, 6};
+    // point vCb {-1,0.5, 6};
+    // point vDb {-1, -0.5, 6};
+
+    // //front 
+    // ras.drawLine(ras.projectVertex(vAf), ras.projectVertex(vBf), {0,0,255}, ren);
+    // ras.drawLine(ras.projectVertex(vBf), ras.projectVertex(vCf), {0,0,255}, ren);
+    // ras.drawLine(ras.projectVertex(vCf), ras.projectVertex(vDf), {0,0,255}, ren);
+    // ras.drawLine(ras.projectVertex(vDf), ras.projectVertex(vAf), {0,0,255}, ren);
+
+    // // back
+    // ras.drawLine(ras.projectVertex(vAb), ras.projectVertex(vBb), {255,0,0}, ren);
+    // ras.drawLine(ras.projectVertex(vBb), ras.projectVertex(vCb), {255,0,0}, ren);
+    // ras.drawLine(ras.projectVertex(vCb), ras.projectVertex(vDb), {255,0,0}, ren);
+    // ras.drawLine(ras.projectVertex(vDb), ras.projectVertex(vAb), {255,0,0}, ren);
+
+    // // connection
+    // ras.drawLine(ras.projectVertex(vAf), ras.projectVertex(vAb), {0,255,0}, ren);
+    // ras.drawLine(ras.projectVertex(vBf), ras.projectVertex(vBb), {0,255,0}, ren);
+    // ras.drawLine(ras.projectVertex(vCf), ras.projectVertex(vCb), {0,255,0}, ren);
+    // ras.drawLine(ras.projectVertex(vDf), ras.projectVertex(vDb), {0,255,0}, ren);
+    
+    // SDL_RenderPresent(ren);
+
+    //New Cube Method
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
-    
 
-    // This is for the (theoretical) cube
-    // front
-    point vAf {-2, -0.5, 5};
-    point vBf {-2, 0.5, 5};
-    point vCf {-1,0.5, 5};
-    point vDf {-1, -0.5, 5};
+    cube cube1;
+    cube cube2;
+    std::array<double, 3> tVec = {-1.5, 0,7};
+    std::array<double, 3> scale1 = {1,2,1};
+    std::array<double, 3> trans1 = {1, 1.2, 9};
+    cube1.scale(scale1);
+    cube1.transform(tVec); 
+    cube2.transform(trans1);
+    ras.renderObject(cube1.verticies, cube1.tri, ren);
+    ras.renderObject(cube2.verticies, cube2.tri, ren);
 
-    // back 
-    point vAb {-2, -0.5, 6};
-    point vBb {-2, 0.5, 6};
-    point vCb {-1,0.5, 6};
-    point vDb {-1, -0.5, 6};
 
-    //front 
-    ras.drawLine(ras.projectVertex(vAf), ras.projectVertex(vBf), {0,0,255}, ren);
-    ras.drawLine(ras.projectVertex(vBf), ras.projectVertex(vCf), {0,0,255}, ren);
-    ras.drawLine(ras.projectVertex(vCf), ras.projectVertex(vDf), {0,0,255}, ren);
-    ras.drawLine(ras.projectVertex(vDf), ras.projectVertex(vAf), {0,0,255}, ren);
-
-    // back
-    ras.drawLine(ras.projectVertex(vAb), ras.projectVertex(vBb), {255,0,0}, ren);
-    ras.drawLine(ras.projectVertex(vBb), ras.projectVertex(vCb), {255,0,0}, ren);
-    ras.drawLine(ras.projectVertex(vCb), ras.projectVertex(vDb), {255,0,0}, ren);
-    ras.drawLine(ras.projectVertex(vDb), ras.projectVertex(vAb), {255,0,0}, ren);
-
-    // connection
-    ras.drawLine(ras.projectVertex(vAf), ras.projectVertex(vAb), {0,255,0}, ren);
-    ras.drawLine(ras.projectVertex(vBf), ras.projectVertex(vBb), {0,255,0}, ren);
-    ras.drawLine(ras.projectVertex(vCf), ras.projectVertex(vCb), {0,255,0}, ren);
-    ras.drawLine(ras.projectVertex(vDf), ras.projectVertex(vDb), {0,255,0}, ren);
-    
     SDL_RenderPresent(ren);
-
+    
 
     
     }

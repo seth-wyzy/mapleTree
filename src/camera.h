@@ -4,9 +4,7 @@
 #include "raster.h"
 
 struct camera {
-    int x, y, z;
-    
-      
+    int x, y, z; 
 };
 // P'z = d, obviously
 // P'y = Py*d / Pz
