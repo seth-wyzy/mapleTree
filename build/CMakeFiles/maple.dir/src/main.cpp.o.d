@@ -287,6 +287,7 @@ CMakeFiles/maple.dir/src/main.cpp.o: \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_shape.h \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
- /usr/include/SDL2/SDL_misc.h /home/seth/projects/mapleTree/src/camera.h \
- /home/seth/projects/mapleTree/src/objects.h /usr/include/c++/11/array \
- /usr/include/c++/11/utility /usr/include/c++/11/bits/stl_relops.h
+ /usr/include/SDL2/SDL_misc.h /home/seth/projects/mapleTree/src/objects.h \
+ /usr/include/c++/11/array /usr/include/c++/11/utility \
+ /usr/include/c++/11/bits/stl_relops.h \
+ /home/seth/projects/mapleTree/src/camera.h

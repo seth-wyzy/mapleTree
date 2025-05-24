@@ -274,7 +274,11 @@ CMakeFiles/maple.dir/src/camera.cpp.o: ../src/camera.cpp \
   /usr/include/SDL2/SDL_timer.h \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_locale.h \
-  /usr/include/SDL2/SDL_misc.h
+  /usr/include/SDL2/SDL_misc.h \
+  ../src/objects.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h
 
 CMakeFiles/maple.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/stdc-predef.h \
@@ -630,7 +634,65 @@ CMakeFiles/maple.dir/src/main.cpp.o: ../src/main.cpp \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_locale.h \
   /usr/include/SDL2/SDL_misc.h \
+  ../src/objects.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
   ../src/camera.h
+
+CMakeFiles/maple.dir/src/objects.cpp.o: ../src/objects.cpp \
+  /usr/include/stdc-predef.h \
+  ../src/objects.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/utility \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
+  /usr/include/features.h \
+  /usr/include/features-time64.h \
+  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
+  /usr/include/x86_64-linux-gnu/bits/timesize.h \
+  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
+  /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
+  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/cpu_defines.h \
+  /usr/include/c++/11/pstl/pstl_config.h \
+  /usr/include/c++/11/bits/stl_relops.h \
+  /usr/include/c++/11/bits/stl_pair.h \
+  /usr/include/c++/11/bits/move.h \
+  /usr/include/c++/11/type_traits \
+  /usr/include/c++/11/initializer_list \
+  /usr/include/c++/11/bits/functexcept.h \
+  /usr/include/c++/11/bits/exception_defines.h \
+  /usr/include/c++/11/bits/stl_algobase.h \
+  /usr/include/c++/11/bits/cpp_type_traits.h \
+  /usr/include/c++/11/ext/type_traits.h \
+  /usr/include/c++/11/ext/numeric_traits.h \
+  /usr/include/c++/11/bits/stl_iterator_base_types.h \
+  /usr/include/c++/11/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/11/bits/concept_check.h \
+  /usr/include/c++/11/debug/assertions.h \
+  /usr/include/c++/11/bits/stl_iterator.h \
+  /usr/include/c++/11/bits/ptr_traits.h \
+  /usr/include/c++/11/debug/debug.h \
+  /usr/include/c++/11/bits/predefined_ops.h \
+  /usr/include/c++/11/bits/range_access.h \
+  /usr/include/c++/11/vector \
+  /usr/include/c++/11/bits/allocator.h \
+  /usr/include/x86_64-linux-gnu/c++/11/bits/c++allocator.h \
+  /usr/include/c++/11/ext/new_allocator.h \
+  /usr/include/c++/11/new \
+  /usr/include/c++/11/bits/exception.h \
+  /usr/include/c++/11/bits/memoryfwd.h \
+  /usr/include/c++/11/bits/stl_construct.h \
+  /usr/include/c++/11/bits/stl_uninitialized.h \
+  /usr/include/c++/11/ext/alloc_traits.h \
+  /usr/include/c++/11/bits/alloc_traits.h \
+  /usr/include/c++/11/bits/stl_vector.h \
+  /usr/include/c++/11/bits/stl_bvector.h \
+  /usr/include/c++/11/bits/functional_hash.h \
+  /usr/include/c++/11/bits/hash_bytes.h \
+  /usr/include/c++/11/bits/vector.tcc
 
 CMakeFiles/maple.dir/src/raster.cpp.o: ../src/raster.cpp \
   /usr/include/stdc-predef.h \
@@ -905,10 +967,16 @@ CMakeFiles/maple.dir/src/raster.cpp.o: ../src/raster.cpp \
   /usr/include/SDL2/SDL_version.h \
   /usr/include/SDL2/SDL_locale.h \
   /usr/include/SDL2/SDL_misc.h \
+  ../src/objects.h \
+  /usr/include/c++/11/array \
+  /usr/include/c++/11/utility \
+  /usr/include/c++/11/bits/stl_relops.h \
   /usr/include/SDL2/SDL_render.h
 
 
 ../src/raster.cpp:
+
+../src/objects.cpp:
 
 /usr/include/c++/11/bits/istream.tcc:
 
@@ -1000,13 +1068,19 @@ CMakeFiles/maple.dir/src/raster.cpp.o: ../src/raster.cpp \
 
 /usr/include/c++/11/cwchar:
 
+/usr/include/c++/11/ostream:
+
+../src/main.cpp:
+
+/usr/include/c++/11/bits/stl_relops.h:
+
 /usr/include/x86_64-linux-gnu/c++/11/bits/error_constants.h:
 
 /usr/include/c++/11/ios:
 
-/usr/include/c++/11/ostream:
+/usr/include/c++/11/utility:
 
-../src/main.cpp:
+../src/objects.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/atomic_word.h:
 
@@ -1395,6 +1469,8 @@ CMakeFiles/maple.dir/src/raster.cpp.o: ../src/raster.cpp \
 /usr/lib/gcc/x86_64-linux-gnu/11/include/avx512bf16vlintrin.h:
 
 /usr/include/c++/11/tr1/bessel_function.tcc:
+
+/usr/include/c++/11/array:
 
 /usr/include/c++/11/tr1/beta_function.tcc:
 
