@@ -13,5 +13,10 @@
   "directory": "/home/seth/projects/mapleTree/build",
   "command": "/usr/bin/g++  -I/usr/include/SDL2 -g -o CMakeFiles/maple.dir/src/camera.cpp.o -c /home/seth/projects/mapleTree/src/camera.cpp",
   "file": "/home/seth/projects/mapleTree/src/camera.cpp"
+},
+{
+  "directory": "/home/seth/projects/mapleTree/build",
+  "command": "/usr/bin/g++  -I/usr/include/SDL2 -g -o CMakeFiles/maple.dir/src/objects.cpp.o -c /home/seth/projects/mapleTree/src/objects.cpp",
+  "file": "/home/seth/projects/mapleTree/src/objects.cpp"
 }
 ]

@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/seth/projects/mapleTree/src/camera.cpp" "CMakeFiles/maple.dir/src/camera.cpp.o" "gcc" "CMakeFiles/maple.dir/src/camera.cpp.o.d"
   "/home/seth/projects/mapleTree/src/main.cpp" "CMakeFiles/maple.dir/src/main.cpp.o" "gcc" "CMakeFiles/maple.dir/src/main.cpp.o.d"
+  "/home/seth/projects/mapleTree/src/objects.cpp" "CMakeFiles/maple.dir/src/objects.cpp.o" "gcc" "CMakeFiles/maple.dir/src/objects.cpp.o.d"
   "/home/seth/projects/mapleTree/src/raster.cpp" "CMakeFiles/maple.dir/src/raster.cpp.o" "gcc" "CMakeFiles/maple.dir/src/raster.cpp.o.d"
   )
 

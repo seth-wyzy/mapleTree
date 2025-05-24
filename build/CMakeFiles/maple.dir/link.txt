@@ -1,1 +1,1 @@
-/usr/bin/g++ -g CMakeFiles/maple.dir/src/main.cpp.o CMakeFiles/maple.dir/src/raster.cpp.o CMakeFiles/maple.dir/src/camera.cpp.o -o maple  -L/usr/lib/x86_64-linux-gnu  -lSDL2 
+/usr/bin/g++ -g CMakeFiles/maple.dir/src/main.cpp.o CMakeFiles/maple.dir/src/raster.cpp.o CMakeFiles/maple.dir/src/camera.cpp.o CMakeFiles/maple.dir/src/objects.cpp.o -o maple  -L/usr/lib/x86_64-linux-gnu  -lSDL2 

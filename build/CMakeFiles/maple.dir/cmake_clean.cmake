@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/maple.dir/src/camera.cpp.o.d"
   "CMakeFiles/maple.dir/src/main.cpp.o"
   "CMakeFiles/maple.dir/src/main.cpp.o.d"
+  "CMakeFiles/maple.dir/src/objects.cpp.o"
+  "CMakeFiles/maple.dir/src/objects.cpp.o.d"
   "CMakeFiles/maple.dir/src/raster.cpp.o"
   "CMakeFiles/maple.dir/src/raster.cpp.o.d"
   "maple"
