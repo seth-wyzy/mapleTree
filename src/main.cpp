@@ -28,12 +28,32 @@ int main(int argc, char* args[]) {
   
     Raster ras;
     camera cam {0,0,0};
+    objects obj;
+
+    SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
+    SDL_RenderClear(ren);
+
+    cube cube1(-1.5, 0, 7,1,1,1,0);
+    cube cube2(1,1.2, 9,1,1,1,0);
+    
+    obj.scene.push_back(&cube1);
+    obj.scene.push_back(&cube2);
+    cube2.transform({-1.5, 0, 7});
+    cube2.transform({-1,-1,-1});
+    cube2.scale({2,1,1});
+    ras.renderScene(obj.scene, ren);
+
+    SDL_RenderPresent(ren);
+    
 
     while (!quit) {
+       
         while (SDL_PollEvent(&e)) {
             if (e.type == SDL_QUIT) {
                 quit = true;
-            } 
+            } else if (e.type == SDL_KEYDOWN) {
+                cam.handleTransform(e, ras, obj.scene, ren);
+            }
         }
     // just some test points for the triangles
     // point p1 = {0,0}; //FIXME: Note that order has changed to x,y,z,h these points are in x,y,h,z
@@ -83,19 +103,9 @@ int main(int argc, char* args[]) {
     // ras.drawLine(ras.projectVertex(vDf), ras.projectVertex(vDb), {0,255,0}, ren);
     
     // SDL_RenderPresent(ren);
-
-    //New Cube Method
-    SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
-    SDL_RenderClear(ren);
-
-    cube cube1(-1.5, 0, 7,1,1,1,0);
-    cube cube2(1,1.2, 9,1,1,1,0);
-    objects obj;
-    obj.scene.push_back(cube1);
-    obj.scene.push_back(cube2);
-    ras.renderScene(obj.scene, ren);
-
-    SDL_RenderPresent(ren);
+        // New Cube Method
+    
+    
     
 
     

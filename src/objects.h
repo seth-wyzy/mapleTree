@@ -33,7 +33,7 @@ struct cube {
 };
 
 struct objects {
-  std::vector<cube> scene;   
+  std::vector<cube*> scene;   
 };
 
 

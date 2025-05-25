@@ -290,4 +290,5 @@ CMakeFiles/maple.dir/src/main.cpp.o: \
  /usr/include/SDL2/SDL_misc.h /home/seth/projects/mapleTree/src/objects.h \
  /usr/include/c++/11/array /usr/include/c++/11/utility \
  /usr/include/c++/11/bits/stl_relops.h \
- /home/seth/projects/mapleTree/src/camera.h
+ /home/seth/projects/mapleTree/src/camera.h \
+ /usr/include/SDL2/SDL_events.h
