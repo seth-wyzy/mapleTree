@@ -41,9 +41,9 @@ void camera::handleTransform(const SDL_Event e, Raster& ras, std::vector<cube*> 
     SDL_RenderPresent(ren);
 }
 
-void camera::handleMotion(const SDL_Event e, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren){
+void camera::handleMotion(const int dx, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren){
     const float sensitivity = -0.005;
-    double rotate = e.motion.xrel * sensitivity;
+    double rotate = dx * sensitivity;
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
     ras.updateScene(scene, ren, {0,0,0}, rotate);

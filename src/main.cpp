@@ -2,6 +2,7 @@
 #include <SDL2/SDL_render.h>
 #include <iostream>
 #include "SDL_keycode.h"
+#include "SDL_mouse.h"
 #include "raster.h"
 #include "camera.h"
 #include <SDL2/SDL.h>
@@ -56,10 +57,12 @@ int main(int argc, char* args[]) {
                 quit = true;
             } else if (e.type == SDL_KEYDOWN) {
                 cam.handleTransform(e, ras, obj.scene, ren);
-            } else if (e.type == SDL_MOUSEMOTION) {
-                cam.handleMotion(e, ras, obj.scene, ren);
             }
         }
+
+    int dx,dy;
+    SDL_GetRelativeMouseState(&dx,&dy);
+    cam.handleMotion(dx, ras, obj.scene, ren);
     // just some test points for the triangles
     // point p1 = {0,0}; //FIXME: Note that order has changed to x,y,z,h these points are in x,y,h,z
     // point p2 = {100,100, 1};
