@@ -27,7 +27,7 @@ int main(int argc, char* args[]) {
     // Initillize stuff
     SDL_Event e;
     bool quit = false;
-  
+    std::array<double, 3> currVel {0,0,0};
     Raster ras;
     camera cam {0,0,0};
     objects obj;
@@ -56,13 +56,19 @@ int main(int argc, char* args[]) {
             if (e.type == SDL_QUIT || e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE) {
                 quit = true;
             } else if (e.type == SDL_KEYDOWN) {
-                cam.handleTransform(e, ras, obj.scene, ren);
+                cam.updateVelocity(e, ras, obj.scene, ren, currVel);
             }
         }
-
+    
     int dx,dy;
     SDL_GetRelativeMouseState(&dx,&dy);
     cam.handleMotion(dx, ras, obj.scene, ren);
+    cam.handleTransform(currVel, ras, obj.scene, ren);
+    for (double& it: currVel) {
+        if (it > 0) it = std::max(0.0, it - FRICTION);
+        else if(it < 0) it = std::min(0.0, it + FRICTION);
+        
+    }
     // just some test points for the triangles
     // point p1 = {0,0}; //FIXME: Note that order has changed to x,y,z,h these points are in x,y,h,z
     // point p2 = {100,100, 1};
