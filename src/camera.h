@@ -8,6 +8,7 @@ struct camera {
     int x, y, z;
     std::array<double, 3> takeInput(const SDL_Event e);
     void handleTransform(const SDL_Event e, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren);
+    void handleMotion(const SDL_Event e, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren);
 
 };
 // P'z = d, obviously

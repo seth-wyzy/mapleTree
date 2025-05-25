@@ -1,6 +1,7 @@
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_render.h>
 #include <iostream>
+#include "SDL_keycode.h"
 #include "raster.h"
 #include "camera.h"
 #include <SDL2/SDL.h>
@@ -29,6 +30,8 @@ int main(int argc, char* args[]) {
     Raster ras;
     camera cam {0,0,0};
     objects obj;
+    SDL_ShowCursor(SDL_DISABLE);
+    SDL_SetRelativeMouseMode(SDL_TRUE);
 
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
@@ -49,10 +52,12 @@ int main(int argc, char* args[]) {
     while (!quit) {
        
         while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_QUIT) {
+            if (e.type == SDL_QUIT || e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE) {
                 quit = true;
             } else if (e.type == SDL_KEYDOWN) {
                 cam.handleTransform(e, ras, obj.scene, ren);
+            } else if (e.type == SDL_MOUSEMOTION) {
+                cam.handleMotion(e, ras, obj.scene, ren);
             }
         }
     // just some test points for the triangles
