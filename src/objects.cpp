@@ -51,9 +51,9 @@ cube::cube(double x, double y, double z, double x_scale, double y_scale, double 
     // tri[10]= {2, 6, 7, {255,0,0}};
     // tri[11]= {2, 7, 3, {255,0,0}};
 
-    transform({x,y,z});
-    scale({x_scale, y_scale, z_scale});
     rotate(rotation);
+    scale({x_scale, y_scale, z_scale});
+    transform({x,y,z});
 }
 
 

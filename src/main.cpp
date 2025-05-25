@@ -33,8 +33,8 @@ int main(int argc, char* args[]) {
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
 
-    cube cube1(-1.5, 0, 7,1,1,1,0);
-    cube cube2(1,1.2, 9,1,1,1,0);
+    cube cube1(-1.5, 0, 7,1,1,1,PI/4);
+    cube cube2(1,1.2, 9,1,1,1,PI/4);
     
     obj.scene.push_back(&cube1);
     obj.scene.push_back(&cube2);
