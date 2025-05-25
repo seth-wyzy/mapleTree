@@ -52,7 +52,7 @@ int main(int argc, char* args[]) {
 
     while (!quit) {
        
-        while (SDL_PollEvent(&e)) {
+        while (SDL_PollEvent(&e)) { //FIXME make this work so that keys being held down are smoother
             if (e.type == SDL_QUIT || e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE) {
                 quit = true;
             } else if (e.type == SDL_KEYDOWN) {
@@ -60,7 +60,7 @@ int main(int argc, char* args[]) {
             }
         }
     
-    int dx,dy;
+    int dx,dy;// FIXME: Fix acceleration and velocity to work at different framerates
     SDL_GetRelativeMouseState(&dx,&dy);
     cam.handleMotion(dx, ras, obj.scene, ren);
     cam.handleTransform(currVel, ras, obj.scene, ren);
