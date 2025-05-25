@@ -2,6 +2,7 @@
 #define OBJECTS
 #include <array>
 #include <vector>
+#include <cmath>
 
 struct point {
     double x,y;
@@ -28,7 +29,7 @@ struct cube {
     std::array<double, 3> currS;
     double currR; 
     void transform(const std::array<double, 3> tVector);
-    void rotate(const double degrees);
+    void rotate(const double radians);
     void scale(const std::array<double, 3> amount);
 };
 

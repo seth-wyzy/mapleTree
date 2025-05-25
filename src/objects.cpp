@@ -1,4 +1,5 @@
 #include "objects.h"
+#include <cmath>
 
 cube::cube(double x, double y, double z, double x_scale, double y_scale, double z_scale, double rotation) {
     verticies.resize(8);
@@ -34,7 +35,7 @@ cube::cube(double x, double y, double z, double x_scale, double y_scale, double 
     tri[8] = {4, 5, 1, {0,255,255}};
     tri[9] = {4, 1, 0, {0,255,255}};
     tri[10]= {2, 6, 7, {255,0,255}};
-    tri[11]= {2, 6, 7, {255,0,255}};
+    tri[11]= {2, 7, 3, {255,0,255}};
 
     // this block is a red cube
     // tri[0] = {0, 1, 2, {255,0,0}};
@@ -48,7 +49,7 @@ cube::cube(double x, double y, double z, double x_scale, double y_scale, double 
     // tri[8] = {4, 5, 1, {255,0,0}};
     // tri[9] = {4, 1, 0, {255,0,0}};
     // tri[10]= {2, 6, 7, {255,0,0}};
-    // tri[11]= {2, 6, 7, {255,0,0}};
+    // tri[11]= {2, 7, 3, {255,0,0}};
 
     transform({x,y,z});
     scale({x_scale, y_scale, z_scale});
@@ -71,8 +72,13 @@ void cube::scale(const std::array<double, 3> t) {
         poi.z *= t[2];
     }
 }
-void cube::rotate(const double degrees) {
-    return;
+void cube::rotate(const double radians) {
+    for (auto& poi: verticies) {
+        double old_x = poi.x;
+        poi.x = poi.x*std::cos(radians) + poi.z*std::sin(radians);
+        // y' = y for a roation around the y axis
+        poi.z = -1*old_x*std::sin(radians) + poi.z*std::cos(radians);
+    }
 }
 
 //TODO: Implement rotate 
