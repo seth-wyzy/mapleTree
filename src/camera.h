@@ -1,13 +1,13 @@
 #ifndef CAMERA
 #define CAMERA
 
-#include "SDL_events.h"
+
 #include "raster.h"
 #include <array>
 
 
-#define ACCEL 2
-#define FRICTION 1
+#define ACCEL 3
+#define FRICTION 0.5
 
 struct camera {
     int x, y, z;

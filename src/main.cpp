@@ -1,8 +1,7 @@
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_render.h>
 #include <iostream>
-#include "SDL_keycode.h"
-#include "SDL_mouse.h"
+
 #include "raster.h"
 #include "camera.h"
 #include <SDL2/SDL.h>
@@ -17,7 +16,10 @@ void close();
 SDL_Window *win  = nullptr;
 SDL_Surface *sur = nullptr;
 SDL_Renderer *ren = nullptr;
-
+//TODO: Why isn't the mouse being hidden on ROG?
+// ! Kinda feels like an issue
+// ? Why isn't it working? 
+// I like the comment colors
 
 int main(int argc, char* args[]) {
      if (!start()){
