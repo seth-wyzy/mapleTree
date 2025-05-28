@@ -26,6 +26,14 @@ int main(int argc, char* args[]) {
         std::cerr << "Initilization ERROR\n";
         return 1;  
     } 
+
+    SDL_RaiseWindow(win);                           
+    SDL_ShowCursor(SDL_DISABLE);
+    SDL_SetRelativeMouseMode(SDL_TRUE);
+    SDL_SetWindowGrab(win, SDL_TRUE);
+    if (SDL_CaptureMouse(SDL_TRUE) < 0) {
+        std::cerr << "Mouse capture failed: " << SDL_GetError() << "\n";
+    }
     // Initillize stuff
     SDL_Event e;
     bool quit = false;
@@ -33,8 +41,7 @@ int main(int argc, char* args[]) {
     Raster ras;
     camera cam {0,0,0};
     objects obj;
-    SDL_ShowCursor(SDL_DISABLE);
-    SDL_SetRelativeMouseMode(SDL_TRUE);
+    
 
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
@@ -128,7 +135,6 @@ int main(int argc, char* args[]) {
     }
 }
 //TODO: Figure out out camera stuff
-
 
 
 

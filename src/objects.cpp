@@ -81,4 +81,8 @@ void cube::rotate(const double radians) {
     }
 }
 
-//TODO: Implement rotate 
+Plane::Plane(double A, double B, double C, double D) {
+    double len = std::sqrt(A*A + B*B + C*C);
+    n = {A/len, B/len, C/len};
+    d = D/len;
+}

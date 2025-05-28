@@ -33,6 +33,14 @@ struct cube {
     void scale(const std::array<double, 3> amount);
 };
 
+struct Plane {
+    point n;
+    double d;
+
+    Plane(double A, double B, double C, double D);
+    double signedDistance (const point p) const {return (n.x*p.x + n.y*p.y + n.z*p.z + d);}
+};  
+
 struct objects {
   std::vector<cube*> scene;   
 };

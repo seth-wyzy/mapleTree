@@ -184,6 +184,23 @@ void Raster::updateScene(std::vector<cube*> scene, SDL_Renderer* ren , std::arra
     renderScene(scene, ren);
 }
 
+// by sending the clipped volume, we can avoid rendering too much
+void Raster::clipWhole(const std::vector<cube*> scene, std::vector<cube*>& clippedScene){
+
+}
+void Raster::clipPart(const std::vector<cube*> scene, std::vector<cube*>& clippedScnee){
+
+}
+
+void Raster::clipTriangles(const std::vector<cube*> scene, std::vector<cube*>& clippedScene){
+
+}
+
+void Raster::clipAll(const std::vector<cube*> scene, std::vector<cube*>& clippedScene){
+
+}
+
+
 
 
 

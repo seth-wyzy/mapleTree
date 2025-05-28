@@ -33,8 +33,12 @@ public:
     void renderScene(std::vector<cube*> scene, SDL_Renderer* ren);
     void updateObj(cube& cub, std::array<double, 3> transform = {0,0,0}, double rotate = 0, std::array<double, 3> scale = {1,1,1});
     void updateScene(std::vector<cube*> scene, SDL_Renderer* ren, std::array<double, 3> transform = {0,0,0}, double rotate = 0, std::array<double, 3> scale = {1,1,1});
+    void clipWhole(const std::vector<cube*> scene, std::vector<cube*>& clippedScene);
+    void clipPart(const std::vector<cube*> scene, std::vector<cube*>& clippedScnee);
+    void clipTriangles(const std::vector<cube*> scene, std::vector<cube*>& clippedScene);
+    void clipAll(const std::vector<cube*> scenel, std::vector<cube*>& clippedScene);
 
-};
+}; 
 
 
 
