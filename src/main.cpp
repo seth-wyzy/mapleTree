@@ -42,7 +42,7 @@ int main(int argc, char* args[]) {
     camera cam {0,0,0};
     objects obj;
     
-
+    // TODO add the fulcrum planes or whatever they are called 
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
 

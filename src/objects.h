@@ -42,7 +42,10 @@ struct Plane {
 };  
 
 struct objects {
-  std::vector<cube*> scene;   
+  std::vector<cube*> scene;
+  std::vector<cube*> clippedScene;
+  std::vector<cube*> tempCubes;
+  std::vector<Plane> planes;
 };
 
 
