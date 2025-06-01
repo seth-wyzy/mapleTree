@@ -190,8 +190,7 @@ CMakeFiles/maple.dir/src/main.cpp.o: /home/seth/mapleTree/src/main.cpp \
  /usr/include/c++/13/bits/locale_facets.tcc \
  /usr/include/c++/13/bits/basic_ios.tcc \
  /usr/include/c++/13/bits/ostream.tcc /usr/include/c++/13/istream \
- /usr/include/c++/13/bits/istream.tcc /usr/include/SDL2/SDL_keycode.h \
- /usr/include/SDL2/SDL_mouse.h /home/seth/mapleTree/src/raster.h \
+ /usr/include/c++/13/bits/istream.tcc /home/seth/mapleTree/src/raster.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
@@ -304,4 +303,4 @@ CMakeFiles/maple.dir/src/main.cpp.o: /home/seth/mapleTree/src/main.cpp \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h /home/seth/mapleTree/src/objects.h \
  /usr/include/c++/13/array /usr/include/c++/13/compare \
- /home/seth/mapleTree/src/camera.h /usr/include/SDL2/SDL_events.h
+ /home/seth/mapleTree/src/camera.h

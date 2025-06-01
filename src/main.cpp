@@ -1,5 +1,6 @@
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_render.h>
+#include <cmath>
 #include <iostream>
 
 #include "raster.h"
@@ -40,21 +41,41 @@ int main(int argc, char* args[]) {
     std::array<double, 3> currVel {0,0,0};
     Raster ras;
     camera cam {0,0,0};
-    objects obj;
+    
     
     // TODO add the fulcrum planes or whatever they are called 
+    // Plane nearPlane(0,0,-1,-DISTANCE);
+    // Plane farPlane(0,0,1,-FARDISTANCE);
+    // double fovRad = FOVDEGREES * M_PI /180.0;
+    // double halfWidth = DISTANCE* tan(fovRad/2.0);
+    // double leftNormalZ = -halfWidth / DISTANCE;
+    // Plane leftPlane(1,0,leftNormalZ, 0);
+    // Plane rightPlane(-1,0,leftNormalZ, 0);
+
+    // ? This is really weird, it like seems like the camera might be in the -z direction kinda
+    Plane nearPlane(0, 0, 1, DISTANCE);      
+    Plane farPlane(0, 0, -1, FARDISTANCE);       
+
+    double fovRad = FOVDEGREES * M_PI / 180.0;
+    double halfWidth = DISTANCE * tan(fovRad / 2.0);
+    double leftNormalZ = halfWidth / DISTANCE;
+    Plane leftPlane(1, 0, leftNormalZ, 0);    
+    Plane rightPlane(-1, 0, leftNormalZ, 0);  
+    
+    objects obj;
+    obj.planes = {nearPlane, farPlane, leftPlane, rightPlane};
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
 
-    cube cube1(-1.5, 0, 7,1,1,1,PI/4);
-    cube cube2(1,1.2, 9,1,1,1,PI/4);
+    cube cube1(-1.5, 0, -7,1,1,1,PI/4);
+    cube cube2(1,1.2, -9,1,1,1,PI/4);
     
     obj.scene.push_back(&cube1);
     obj.scene.push_back(&cube2);
     cube2.transform({-1.5, 0, 7});
     cube2.transform({-1,-1,-1});
     cube2.scale({2,1,1});
-    ras.renderScene(obj.scene, ren);
+    ras.renderScene(obj.scene, ren, obj.planes);
 
     SDL_RenderPresent(ren);
     
@@ -71,8 +92,9 @@ int main(int argc, char* args[]) {
     
     int dx,dy;// FIXME: Fix acceleration and velocity to work at different framerates
     SDL_GetRelativeMouseState(&dx,&dy);
-    cam.handleMotion(dx, ras, obj.scene, ren);
-    cam.handleTransform(currVel, ras, obj.scene, ren);
+    cam.handleMotion(dx, ras, obj.scene, ren, obj.planes);
+    cam.handleTransform(currVel, ras, obj.scene, ren, obj.planes);
+
     for (double& it: currVel) {
         if (it > 0) it = std::max(0.0, it - FRICTION);
         else if(it < 0) it = std::min(0.0, it + FRICTION);

@@ -11,19 +11,19 @@ std::array<double, 3> camera::takeInput(const SDL_Event e){
      if (e.type == SDL_KEYDOWN) {
         switch (e.key.keysym.sym) {
             case SDLK_w: 
-                transOut[2] = -ACCEL;
+                transOut[2] = ACCEL;
                 // std::cout<< "w Pressed, trying forward" << std::endl;
                 return transOut;
             case SDLK_d:
-                transOut[0] = -ACCEL/1.2;
+                transOut[0] = ACCEL/1.2;
                 //  std::cout<< "d Pressed, trying forward" << std::endl;
                 return transOut;
             case SDLK_s:
-                transOut[2] =ACCEL;
+                transOut[2] =-ACCEL;
                 // std::cout <<"s pressed, trying backwards" << std::endl;
                 return transOut;
             case SDLK_a: 
-                transOut[0] = ACCEL/1.2;
+                transOut[0] = +ACCEL/1.2;
                 // std::cout << "a pressed, tyring backwards" << std::endl; -- these were in for debugging if the keys were being tracked
                 return transOut;
             default:
@@ -45,19 +45,19 @@ void camera::updateVelocity(const SDL_Event e, Raster& ras, std::vector<cube*> s
     // SDL_RenderPresent(ren);
     
 }
-void camera::handleTransform(std::array<double, 3> friction, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren) {
+void camera::handleTransform(std::array<double, 3> friction, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren, std::array<Plane, 4> planes) {
     SDL_SetRenderDrawColor(ren, 255,255, 255, 255);
     SDL_RenderClear(ren);
-    ras.updateScene(scene, ren, friction);
+    ras.updateScene(scene, ren, planes,friction);
     SDL_RenderPresent(ren);
 }
 
-void camera::handleMotion(const int dx, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren){
+void camera::handleMotion(const int dx, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren, std::array<Plane, 4> planes){
     const float sensitivity = 0.005;
     double rotate = dx * sensitivity;
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
-    ras.updateScene(scene, ren, {0,0,0}, rotate);
+    ras.updateScene(scene, ren, planes, {0,0,0}, rotate);
     SDL_RenderPresent(ren); 
 }
 

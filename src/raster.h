@@ -13,6 +13,8 @@
 #define VIEWPORT_HEIGHT 1
 #define VIEWPORT_DEPTH 1
 #define DISTANCE 1
+#define FARDISTANCE 100
+#define FOVDEGREES 90
 
 
 
@@ -30,9 +32,9 @@ public:
     point projectVertex(const point& p);
     void renderTriangle(triangle t, std::vector<point> proj,SDL_Renderer* ren);
     void renderObject(std::vector<point> verticies, std::vector<triangle> triangle,SDL_Renderer* ren); 
-    void renderScene(std::vector<cube*> scene, SDL_Renderer* ren);
+    void renderScene(std::vector<cube*> scene, SDL_Renderer* ren,std::array<Plane, 4> planes);
     void updateObj(cube& cub, std::array<double, 3> transform = {0,0,0}, double rotate = 0, std::array<double, 3> scale = {1,1,1});
-    void updateScene(std::vector<cube*> scene, SDL_Renderer* ren, std::array<double, 3> transform = {0,0,0}, double rotate = 0, std::array<double, 3> scale = {1,1,1});
+    void updateScene(std::vector<cube*> scene, SDL_Renderer* ren, std::array<Plane, 4> planes, std::array<double, 3> transform = {0,0,0}, double rotate = 0, std::array<double, 3> scale = {1,1,1});
     void clipWhole(const std::vector<cube*> scene, std::vector<cube*>& clippedScene, const std::array<Plane, 4> planes);
     void clipAll(const std::vector<cube*> scenel, std::vector<cube*>& clippedScene, const std::array<Plane, 4> planes);
 

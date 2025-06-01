@@ -166,8 +166,10 @@ void Raster::renderTriangle(triangle t, std::vector<point> proj, SDL_Renderer* r
     drawWireTriangle(p0, p1, p2, t.color, ren);
 }
 
-void Raster::renderScene(std::vector<cube*> scene, SDL_Renderer* ren) {
-    for (const auto& cube: scene) {
+void Raster::renderScene(std::vector<cube*> scene, SDL_Renderer* ren, std::array<Plane, 4> planes) {
+    std::vector<cube*> temp;
+    clipAll(scene, temp, planes);
+    for (const auto& cube: temp) {
         renderObject(cube->verticies, cube->tri, ren);
     }
 }
@@ -177,11 +179,11 @@ void Raster::updateObj(cube& cub, std::array<double, 3> transform, double rotate
     cub.scale(scale);
 }
 
-void Raster::updateScene(std::vector<cube*> scene, SDL_Renderer* ren , std::array<double, 3> transform, double rotate, std::array<double, 3> scale) {
+void Raster::updateScene(std::vector<cube*> scene, SDL_Renderer* ren ,  std::array<Plane, 4> planes, std::array<double, 3> transform, double rotate, std::array<double, 3> scale) {
     for (auto& it: scene) {
         updateObj(*it,transform, rotate, scale );
     }
-    renderScene(scene, ren);
+    renderScene(scene, ren, planes);
 }
 
 // by sending the clipped volume, we can avoid rendering too much
@@ -200,7 +202,8 @@ void Raster::clipWhole(const std::vector<cube*> scene, std::vector<cube*>& clipp
 }
 
 void Raster::clipAll(const std::vector<cube*> scene, std::vector<cube*>& clippedScene, const std::array<Plane, 4> planes){
-    
+    clippedScene.clear();
+    clipWhole(scene, clippedScene, planes); // this only calls this for now but will be expanded on later
 }
 
 

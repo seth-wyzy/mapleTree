@@ -15,8 +15,8 @@ struct camera {
     double y_velocity = 0;
     std::array<double, 3> takeInput(const SDL_Event e);
     void updateVelocity(const SDL_Event e, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren, std::array<double, 3>& currVel);
-    void handleTransform(std::array<double, 3> friction, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren);
-    void handleMotion(const int dx, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren);
+    void handleTransform(std::array<double, 3> friction, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren,  std::array<Plane, 4> planes);
+    void handleMotion(const int dx, Raster& ras, std::vector<cube*> scene, SDL_Renderer* ren,std::array<Plane, 4> planes);
 
 };
 // P'z = d, obviously

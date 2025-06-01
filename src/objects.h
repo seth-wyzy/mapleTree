@@ -36,7 +36,7 @@ struct cube {
 struct Plane {
     point n;
     double d;
-
+    Plane() : n{0,0,0}, d(0) {} 
     Plane(double A, double B, double C, double D);
     double signedDistance (const point p) const {return (n.x*p.x + n.y*p.y + n.z*p.z + d);}
 };  
@@ -45,7 +45,7 @@ struct objects {
   std::vector<cube*> scene;
   std::vector<cube*> clippedScene;
   std::vector<cube*> tempCubes;
-  std::vector<Plane> planes;
+  std::array<Plane, 4> planes;
 };
 
 
