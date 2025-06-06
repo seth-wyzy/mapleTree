@@ -164,6 +164,7 @@ void Raster::renderTriangle(triangle t, std::vector<point> proj, SDL_Renderer* r
     const point& p1 = proj[t.verts[1]];
     const point& p2 = proj[t.verts[2]];
     drawWireTriangle(p0, p1, p2, t.color, ren);
+    // fillInTriangle(p0, p1, p2, t.color, ren);
 }
 
 void Raster::renderScene(std::vector<cube*> scene, SDL_Renderer* ren, std::array<Plane, 4> planes) {
@@ -192,8 +193,8 @@ void Raster::clipWhole(const std::vector<cube*> scene, std::vector<cube*>& clipp
         for (const auto& vert: cub->verticies) {
             if (planes[0].signedDistance(vert) < 0 ||
               planes[1].signedDistance(vert) < 0 ||
-              planes[2].signedDistance(vert) < 0 ||
-              planes[3].signedDistance(vert) < 0) { // this is weirdly unreadable and I really don't know how to not do that right now
+              planes[2].signedDistance(vert) < 0 || // this is weirdly unreadable and I really don't know how to not do that right now
+              planes[3].signedDistance(vert) < 0) { // but it is working and I don't want to break it
                 clippedScene.push_back(cub);
                 break;
             }
@@ -204,7 +205,7 @@ void Raster::clipWhole(const std::vector<cube*> scene, std::vector<cube*>& clipp
 
 void Raster::clipAll(const std::vector<cube*> scene, std::vector<cube*>& clippedScene, const std::array<Plane, 4> planes){
     clippedScene.clear();
-    clipWhole(scene, clippedScene, planes); // this only calls this for now but will be expanded on later
+    clipWhole(scene, clippedScene, planes); // this only calls this for now but will be expanded on later to actually clip everything
 }
 
 
