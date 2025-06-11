@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/seth/mapleTree/build",
+  "command": "/usr/bin/clang++ -isystem /usr/include/SDL2 -g -std=gnu++17 -o CMakeFiles/maple.dir/src/main.cpp.o -c /home/seth/mapleTree/src/main.cpp",
+  "file": "/home/seth/mapleTree/src/main.cpp",
+  "output": "CMakeFiles/maple.dir/src/main.cpp.o"
+},
+{
+  "directory": "/home/seth/mapleTree/build",
+  "command": "/usr/bin/clang++ -isystem /usr/include/SDL2 -g -std=gnu++17 -o CMakeFiles/maple.dir/src/raster.cpp.o -c /home/seth/mapleTree/src/raster.cpp",
+  "file": "/home/seth/mapleTree/src/raster.cpp",
+  "output": "CMakeFiles/maple.dir/src/raster.cpp.o"
+},
+{
+  "directory": "/home/seth/mapleTree/build",
+  "command": "/usr/bin/clang++ -isystem /usr/include/SDL2 -g -std=gnu++17 -o CMakeFiles/maple.dir/src/camera.cpp.o -c /home/seth/mapleTree/src/camera.cpp",
+  "file": "/home/seth/mapleTree/src/camera.cpp",
+  "output": "CMakeFiles/maple.dir/src/camera.cpp.o"
+},
+{
+  "directory": "/home/seth/mapleTree/build",
+  "command": "/usr/bin/clang++ -isystem /usr/include/SDL2 -g -std=gnu++17 -o CMakeFiles/maple.dir/src/objects.cpp.o -c /home/seth/mapleTree/src/objects.cpp",
+  "file": "/home/seth/mapleTree/src/objects.cpp",
+  "output": "CMakeFiles/maple.dir/src/objects.cpp.o"
+}
+]
