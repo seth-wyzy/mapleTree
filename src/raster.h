@@ -37,7 +37,7 @@ public:
     void updateScene(std::vector<cube*> scene, SDL_Renderer* ren, std::array<Plane, 4> planes, std::array<double, 3> transform = {0,0,0}, double rotate = 0, std::array<double, 3> scale = {1,1,1});
     void clipWhole(const std::vector<cube*> scene, std::vector<cube*>& clippedScene, const std::array<Plane, 4> planes);
     void clipAll(const std::vector<cube*> scenel, std::vector<cube*>& clippedScene, const std::array<Plane, 4> planes);
-
+    std::vector<cube*> cutTriangles(std::vector<cube*> clipedScene);
 }; 
 
 

@@ -1,6 +1,9 @@
 #include "raster.h"
 #include "objects.h"
 #include <SDL2/SDL_render.h>
+#include <algorithm>
+#include <cmath>
+#include <cstdio>
 #include <vector>
 
 
@@ -157,6 +160,7 @@ void Raster::renderObject(std::vector<point> verticies , std::vector<triangle> t
     for (const auto& it: tri) {
         renderTriangle(it, projected, ren);
     }
+    
 }
 
 void Raster::renderTriangle(triangle t, std::vector<point> proj, SDL_Renderer* ren){
@@ -170,7 +174,8 @@ void Raster::renderTriangle(triangle t, std::vector<point> proj, SDL_Renderer* r
 void Raster::renderScene(std::vector<cube*> scene, SDL_Renderer* ren, std::array<Plane, 4> planes) {
     std::vector<cube*> temp;
     clipAll(scene, temp, planes);
-    for (const auto& cube: temp) {
+    std::vector<cube*> cutFaces = cutTriangles(temp);
+    for (const auto& cube: cutFaces) {
         renderObject(cube->verticies, cube->tri, ren);
     }
 }
@@ -208,8 +213,34 @@ void Raster::clipAll(const std::vector<cube*> scene, std::vector<cube*>& clipped
     clipWhole(scene, clippedScene, planes); // this only calls this for now but will be expanded on later to actually clip everything
 }
 
-
-
+std::vector<cube*> Raster::cutTriangles(std::vector<cube*> clippedScene) {
+    for (const auto& cube: clippedScene) {
+        std::vector<triangle> visibleTriangles;
+        for (const auto& tri: cube->tri) {
+            point a = cube->verticies[tri.verts[0]];
+            point b = cube->verticies[tri.verts[1]];
+            point c = cube->verticies[tri.verts[2]];
+            point ab = {b.x-a.x, b.y-a.y, b.z-a.z};
+            point ac = {c.x-a.x,c.y-a.y,c.z-a.z};
+            point n = ac.cross(ab, ac);
+            double len = std::sqrt(n.x*n.x + n.y*n.y + n.z*n.z);
+            if (len >= 0) {
+                n.x /= len;
+                n.y /= len;
+                n.z /= len;
+            
+            // cam to triangle vector is just one of the points on the triangle
+            // because cam is at {0,0,0} so the point is just a vector from the cam to the vertex
+            double sign = n.dot(n, a);
+                if (sign < 0) {
+                    visibleTriangles.push_back(tri);
+                }
+            }
+        }
+        cube->tri = visibleTriangles;
+    }
+    return clippedScene;
+}
 
 
 

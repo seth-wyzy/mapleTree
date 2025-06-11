@@ -37,7 +37,7 @@ cube::cube(double x, double y, double z, double x_scale, double y_scale, double 
     tri[10]= {2, 6, 7, {255,0,255}};
     tri[11]= {2, 7, 3, {255,0,255}};
 
-    // this block is a red cube
+    // this block is a red cube (just a different color)
     // tri[0] = {0, 1, 2, {255,0,0}};
     // tri[1] = {0, 2, 3, {255,0,0}};
     // tri[2] = {4, 0, 3, {255,0,0}};
@@ -84,5 +84,9 @@ void cube::rotate(const double radians) {
 Plane::Plane(double A, double B, double C, double D) {
     double len = std::sqrt(A*A + B*B + C*C);
     n = {A/len, B/len, C/len};
-    d = D/len;
+    d = D/len; 
+}
+
+point point::cross(const point a, const point b) {
+    return {a.y*b.z - a.z*b.y, a.z*b.x-a.x*b.z, a.x*b.y-a.y*b.x};
 }

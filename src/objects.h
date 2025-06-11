@@ -13,6 +13,8 @@ struct point {
     point operator+(const double scale) const {return {x+scale, y+scale, z+scale,h };}
     point operator+=(const double scale) const {return {x+scale, y+scale, z+scale,h };}
     point operator*=(const double scale) const {return {x*scale, y*scale, z*scale, h};}
+    point cross(const point a,const point b);
+    double dot(const point a,const point b) {return a.x*b.x+a.y*b.y+a.z+b.z;}
 };
 
 
