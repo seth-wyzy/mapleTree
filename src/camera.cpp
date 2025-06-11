@@ -23,7 +23,7 @@ std::array<double, 3> camera::takeInput(const SDL_Event e){
                 // std::cout <<"s pressed, trying backwards" << std::endl;
                 return transOut;
             case SDLK_a: 
-                transOut[0] = +ACCEL/1.2;
+                transOut[0] = -ACCEL/1.2;
                 // std::cout << "a pressed, tyring backwards" << std::endl; -- these were in for debugging if the keys were being tracked
                 return transOut;
             default:
