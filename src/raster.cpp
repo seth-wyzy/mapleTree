@@ -167,15 +167,16 @@ void Raster::renderTriangle(triangle t, std::vector<point> proj, SDL_Renderer* r
     const point& p0 = proj[t.verts[0]];
     const point& p1 = proj[t.verts[1]];
     const point& p2 = proj[t.verts[2]];
-    drawWireTriangle(p0, p1, p2, t.color, ren);
-    // fillInTriangle(p0, p1, p2, t.color, ren);
+    // drawWireTriangle(p0, p1, p2, t.color, ren);
+    fillInTriangle(p0, p1, p2, t.color, ren);
 }
 
 void Raster::renderScene(std::vector<cube*> scene, SDL_Renderer* ren, std::array<Plane, 4> planes) {
     std::vector<cube*> temp;
     clipAll(scene, temp, planes);
     std::vector<cube*> cutFaces = cutTriangles(temp);
-    for (const auto& cube: cutFaces) {
+    for (const auto& cube: cutFaces){
+    // for (const auto& cube: temp) {
         renderObject(cube->verticies, cube->tri, ren);
     }
 }
@@ -213,16 +214,17 @@ void Raster::clipAll(const std::vector<cube*> scene, std::vector<cube*>& clipped
     clipWhole(scene, clippedScene, planes); // this only calls this for now but will be expanded on later to actually clip everything
 }
 
-std::vector<cube*> Raster::cutTriangles(std::vector<cube*> clippedScene) {
+std::vector<cube*> Raster::cutTriangles(std::vector<cube*> clippedScene) {// i wanted this to be a copy so that it checks it every time but im not sure if that is working
     for (const auto& cube: clippedScene) {
+        std::vector<triangle> fullScene = cube->tri;
         std::vector<triangle> visibleTriangles;
-        for (const auto& tri: cube->tri) {
+        for (const auto& tri: fullScene) {
             point a = cube->verticies[tri.verts[0]];
             point b = cube->verticies[tri.verts[1]];
             point c = cube->verticies[tri.verts[2]];
             point ab = {b.x-a.x, b.y-a.y, b.z-a.z};
             point ac = {c.x-a.x,c.y-a.y,c.z-a.z};
-            point n = ac.cross(ab, ac);
+            point n = ab.cross(ab, ac);
             double len = std::sqrt(n.x*n.x + n.y*n.y + n.z*n.z);
             if (len >= 0) {
                 n.x /= len;
@@ -232,17 +234,19 @@ std::vector<cube*> Raster::cutTriangles(std::vector<cube*> clippedScene) {
             // cam to triangle vector is just one of the points on the triangle
             // because cam is at {0,0,0} so the point is just a vector from the cam to the vertex
             double sign = n.dot(n, a);
-                if (sign < 0) {
+                if (sign <= 0) { // ok so this isn't working the way that is is supposed to
                     visibleTriangles.push_back(tri);
                 }
             }
         }
         cube->tri = visibleTriangles;
     }
-    return clippedScene;
+    return clippedScene;  // TODO figure ouot how to return the correct thing
 }
 
 
 
 
 // this is a test comment
+// so im losing the cubes, so something is working
+// cannot go though htem anymore. Im losing them, like once faces delete, they don't come back

@@ -8,11 +8,12 @@
 #include <SDL2/SDL.h>
 #include <vector>
 #include "objects.h"
+#include "load.h"
 
 
 
 bool start();
-void close();
+void close(std::vector<cube*> fullScene);
 
 SDL_Window *win  = nullptr;
 SDL_Surface *sur = nullptr;
@@ -41,9 +42,10 @@ int main(int argc, char* args[]) {
     std::array<double, 3> currVel {0,0,0};
     Raster ras;
     camera cam {0,0,0};
+    Loader load;
     
     
-    // TODO add the fulcrum planes or whatever they are called 
+    // TODO add the fulcrum planes or whatever they are called  // todone i think
     // Plane nearPlane(0,0,-1,-DISTANCE);
     // Plane farPlane(0,0,1,-FARDISTANCE);
     // double fovRad = FOVDEGREES * M_PI /180.0;
@@ -66,19 +68,21 @@ int main(int argc, char* args[]) {
     obj.planes = {nearPlane, farPlane, leftPlane, rightPlane};
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
+    if (argc == 1) {
+        // cube *cube1 = new cube(-1.5, 0, -7,1,1,1,PI/4);
+        // cube *cube2 = new cube(1,1.2, -9,1,1,1,PI/4);
+        
+        // obj.scene.push_back(cube1);
+        // obj.scene.push_back(cube2);
+        // cube2->transform({-1.5, 0, 7});
+        // cube2->transform({-1,-1,-1});
+        // cube2->scale({2,1,1});
+        // ras.renderScene(obj.scene, ren, obj.planes);
 
-    cube cube1(-1.5, 0, -7,1,1,1,PI/4);
-    cube cube2(1,1.2, -9,1,1,1,PI/4);
-    
-    obj.scene.push_back(&cube1);
-    obj.scene.push_back(&cube2);
-    cube2.transform({-1.5, 0, 7});
-    cube2.transform({-1,-1,-1});
-    cube2.scale({2,1,1});
-    ras.renderScene(obj.scene, ren, obj.planes);
-
-    SDL_RenderPresent(ren);
-    
+        // SDL_RenderPresent(ren);
+    } else if (argc == 2) {
+        load.loadFromFile(args[1], obj.scene);
+    } 
 
     while (!quit) {
        
@@ -155,6 +159,7 @@ int main(int argc, char* args[]) {
 
     
     }
+    close(obj.scene);
 }
 //TODO: Figure out out camera stuff
 
@@ -180,7 +185,10 @@ bool start() {
     return true;
 }
 
-void close() {
+void close(std::vector<cube*> fullScene) {
+    for (const auto& cub: fullScene) {
+        delete cub;
+    }
     SDL_FreeSurface(sur);
     SDL_DestroyWindow(win);
     SDL_Quit();
