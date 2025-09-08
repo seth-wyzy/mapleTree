@@ -25,6 +25,7 @@ struct triangle {
 
 struct cube {
     cube(double x, double y, double z, double x_scale, double y_scale, double z_scale, double rotation);
+    cube(const cube& other);
     std::vector<point> verticies;
     std::vector<triangle> tri;
     std::array<double, 3> currT;

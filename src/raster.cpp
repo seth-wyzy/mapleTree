@@ -207,7 +207,7 @@ void Raster::clipWhole(const std::vector<cube*> scene, std::vector<cube*>& clipp
         }
     }
     
-}
+} 
 
 void Raster::clipAll(const std::vector<cube*> scene, std::vector<cube*>& clippedScene, const std::array<Plane, 4> planes){
     clippedScene.clear();
@@ -238,7 +238,7 @@ std::vector<cube*> Raster::cutTriangles(std::vector<cube*> clippedScene) {// i w
                     visibleTriangles.push_back(tri);
                 }
             }
-        }
+        } 
         cube->tri = visibleTriangles;
     }
     return clippedScene;  // TODO figure ouot how to return the correct thing

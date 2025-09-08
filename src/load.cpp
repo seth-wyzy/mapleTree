@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 
-
+//TODO add walls around everything
 void Loader::loadFromFile(std::string filename, std::vector<cube*>& fullScene) {
     std::ifstream inMap(filename);
     std::string line;

@@ -64,22 +64,22 @@ int main(int argc, char* args[]) {
     Plane leftPlane(1, 0, leftNormalZ, 0);    
     Plane rightPlane(-1, 0, leftNormalZ, 0);  
     
-    objects obj;
+    objects obj; 
     obj.planes = {nearPlane, farPlane, leftPlane, rightPlane};
     SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
     SDL_RenderClear(ren);
     if (argc == 1) {
-        // cube *cube1 = new cube(-1.5, 0, -7,1,1,1,PI/4);
-        // cube *cube2 = new cube(1,1.2, -9,1,1,1,PI/4);
+        cube *cube1 = new cube(-1.5, 0, -7,1,1,1,PI/4);
+        cube *cube2 = new cube(1,1.2, -9,1,1,1,PI/4);
         
-        // obj.scene.push_back(cube1);
-        // obj.scene.push_back(cube2);
-        // cube2->transform({-1.5, 0, 7});
-        // cube2->transform({-1,-1,-1});
-        // cube2->scale({2,1,1});
-        // ras.renderScene(obj.scene, ren, obj.planes);
+        obj.scene.push_back(cube1);
+        obj.scene.push_back(cube2); 
+        cube2->transform({-1.5, 0, 7});
+        cube2->transform({-1,-1,-1});
+        cube2->scale({2,1,1});
+        ras.renderScene(obj.scene, ren, obj.planes);
 
-        // SDL_RenderPresent(ren);
+        SDL_RenderPresent(ren);
     } else if (argc == 2) {
         load.loadFromFile(args[1], obj.scene);
     } 

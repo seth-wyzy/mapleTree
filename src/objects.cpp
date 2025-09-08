@@ -56,6 +56,15 @@ cube::cube(double x, double y, double z, double x_scale, double y_scale, double 
     transform({x,y,z});
 }
 
+cube::cube(const cube& other)
+    : verticies(other.verticies),
+      tri(other.tri),
+      currT(other.currT),
+      currS(other.currS),
+      currR(other.currR)
+{
+    // nothing needs to be done in here (this is not wrong)
+}
 
 
 void cube::transform(const std::array<double, 3> t) {
