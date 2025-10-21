@@ -9,6 +9,7 @@ add_executable(maple src/main.cpp
                      src/raster.cpp
                      src/camera.cpp
                      src/objects.cpp
+                     src/load.cpp
                           )
 
 target_link_libraries(maple ${SDL2_LIBRARIES})

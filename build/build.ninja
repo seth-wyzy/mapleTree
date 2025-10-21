@@ -77,6 +77,13 @@ build CMakeFiles/maple.dir/src/objects.cpp.o: CXX_COMPILER__maple_unscanned_Debu
   OBJECT_DIR = CMakeFiles/maple.dir
   OBJECT_FILE_DIR = CMakeFiles/maple.dir/src
 
+build CMakeFiles/maple.dir/src/load.cpp.o: CXX_COMPILER__maple_unscanned_Debug /home/seth/mapleTree/src/load.cpp || cmake_object_order_depends_target_maple
+  DEP_FILE = CMakeFiles/maple.dir/src/load.cpp.o.d
+  FLAGS = -g -std=gnu++17
+  INCLUDES = -isystem /usr/include/SDL2
+  OBJECT_DIR = CMakeFiles/maple.dir
+  OBJECT_FILE_DIR = CMakeFiles/maple.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target maple
@@ -85,7 +92,7 @@ build CMakeFiles/maple.dir/src/objects.cpp.o: CXX_COMPILER__maple_unscanned_Debu
 #############################################
 # Link the executable maple
 
-build maple: CXX_EXECUTABLE_LINKER__maple_Debug CMakeFiles/maple.dir/src/main.cpp.o CMakeFiles/maple.dir/src/raster.cpp.o CMakeFiles/maple.dir/src/camera.cpp.o CMakeFiles/maple.dir/src/objects.cpp.o | /usr/lib/x86_64-linux-gnu/libSDL2.so
+build maple: CXX_EXECUTABLE_LINKER__maple_Debug CMakeFiles/maple.dir/src/main.cpp.o CMakeFiles/maple.dir/src/raster.cpp.o CMakeFiles/maple.dir/src/camera.cpp.o CMakeFiles/maple.dir/src/objects.cpp.o CMakeFiles/maple.dir/src/load.cpp.o | /usr/lib/x86_64-linux-gnu/libSDL2.so
   FLAGS = -g
   LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libSDL2.so
   OBJECT_DIR = CMakeFiles/maple.dir

@@ -249,4 +249,11 @@ CMakeFiles/maple.dir/src/raster.cpp.o: \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h /home/seth/mapleTree/src/objects.h \
  /usr/include/c++/13/array /usr/include/c++/13/compare \
- /usr/include/SDL2/SDL_render.h
+ /usr/include/SDL2/SDL_render.h /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/bits/stl_algo.h \
+ /usr/include/c++/13/bits/algorithmfwd.h \
+ /usr/include/c++/13/bits/stl_heap.h \
+ /usr/include/c++/13/bits/uniform_int_dist.h \
+ /usr/include/c++/13/bits/stl_tempbuf.h \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/13/pstl/execution_defs.h /usr/include/c++/13/cstdio

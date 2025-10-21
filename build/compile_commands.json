@@ -22,5 +22,11 @@
   "command": "/usr/bin/clang++ -isystem /usr/include/SDL2 -g -std=gnu++17 -o CMakeFiles/maple.dir/src/objects.cpp.o -c /home/seth/mapleTree/src/objects.cpp",
   "file": "/home/seth/mapleTree/src/objects.cpp",
   "output": "CMakeFiles/maple.dir/src/objects.cpp.o"
+},
+{
+  "directory": "/home/seth/mapleTree/build",
+  "command": "/usr/bin/clang++ -isystem /usr/include/SDL2 -g -std=gnu++17 -o CMakeFiles/maple.dir/src/load.cpp.o -c /home/seth/mapleTree/src/load.cpp",
+  "file": "/home/seth/mapleTree/src/load.cpp",
+  "output": "CMakeFiles/maple.dir/src/load.cpp.o"
 }
 ]

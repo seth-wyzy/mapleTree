@@ -153,6 +153,30 @@ src/camera.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/maple.dir/build.make CMakeFiles/maple.dir/src/camera.cpp.s
 .PHONY : src/camera.cpp.s
 
+src/load.o: src/load.cpp.o
+.PHONY : src/load.o
+
+# target to build an object file
+src/load.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/maple.dir/build.make CMakeFiles/maple.dir/src/load.cpp.o
+.PHONY : src/load.cpp.o
+
+src/load.i: src/load.cpp.i
+.PHONY : src/load.i
+
+# target to preprocess a source file
+src/load.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/maple.dir/build.make CMakeFiles/maple.dir/src/load.cpp.i
+.PHONY : src/load.cpp.i
+
+src/load.s: src/load.cpp.s
+.PHONY : src/load.s
+
+# target to generate assembly for a file
+src/load.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/maple.dir/build.make CMakeFiles/maple.dir/src/load.cpp.s
+.PHONY : src/load.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -237,6 +261,9 @@ help:
 	@echo "... src/camera.o"
 	@echo "... src/camera.i"
 	@echo "... src/camera.s"
+	@echo "... src/load.o"
+	@echo "... src/load.i"
+	@echo "... src/load.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

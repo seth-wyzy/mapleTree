@@ -303,4 +303,8 @@ CMakeFiles/maple.dir/src/main.cpp.o: /home/seth/mapleTree/src/main.cpp \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
  /usr/include/SDL2/SDL_misc.h /home/seth/mapleTree/src/objects.h \
  /usr/include/c++/13/array /usr/include/c++/13/compare \
- /home/seth/mapleTree/src/camera.h
+ /home/seth/mapleTree/src/camera.h /home/seth/mapleTree/src/load.h \
+ /usr/include/c++/13/fstream /usr/include/c++/13/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/c++/13/bits/fstream.tcc
