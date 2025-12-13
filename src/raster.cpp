@@ -39,7 +39,7 @@ void Raster::drawLine(point start, point end, std::vector<int> color, SDL_Render
     end = toScreenCords(end);
     // make sure that start.x is less than end.x
     SDL_SetRenderDrawColor(ren, color[0], color[1], color[2], 255);
-    if (abs(end.x - start.x) > abs(end.y - start.y)) { // for more H line
+    if (abs(end.x - start.x) > abs(end.y - start.y)) { // for more horizontal line
         if (start.x > end.x) {
             swap(start, end);
         }

@@ -39,7 +39,7 @@ public:
     void clipAll(const std::vector<cube*> scenel, std::vector<cube*>& clippedScene, const std::array<Plane, 4> planes);
     std::vector<cube*> cutTriangles(std::vector<cube*> clipedScene);
 }; 
-//todo add a ceiling and floor before rendering frame (put it in renderScene probabaly)
+//TODO: add a ceiling and floor before rendering frame (put it in renderScene probabaly)
 
 
 #endif

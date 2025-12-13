@@ -71,9 +71,10 @@ int main(int argc, char* args[]) {
     if (argc == 1) {
         cube *cube1 = new cube(-1.5, 0, -7,1,1,1,PI/4);
         cube *cube2 = new cube(1,1.2, -9,1,1,1,PI/4);
-        
+        cube *cube3 = new cube(-1, -1, -5, 1, 1, 1, PI/2);
         obj.scene.push_back(cube1);
         obj.scene.push_back(cube2); 
+        obj.scene.push_back(cube3);
         cube2->transform({-1.5, 0, 7});
         cube2->transform({-1,-1,-1});
         cube2->scale({2,1,1});
@@ -82,7 +83,7 @@ int main(int argc, char* args[]) {
         SDL_RenderPresent(ren);
     } else if (argc == 2) {
         load.loadFromFile(args[1], obj.scene);
-    } 
+    }
 
     while (!quit) {
        
