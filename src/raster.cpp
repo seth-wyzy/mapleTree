@@ -57,6 +57,7 @@ void Raster::drawLine(point start, point end, std::vector<int> color, SDL_Render
         }
     }
 }
+
 template <typename T>
 std::vector<double> Raster::interpolate(T i0, T d0, T i1, T d1) {
     if (i0 == i1) {
@@ -108,7 +109,7 @@ void Raster::fillInTriangle(point p0, point p1, point p2, std::vector<int> color
     std::vector<double> x012 = concat_vectors(x01, x12);
     std::vector<double> h012 = concat_vectors(h01, h12);
 
-    // Left vs Right i feel like this color is fine, it draws your eye, but not like too much
+
     std::vector<double> x_left;
     std::vector<double> h_left;
     std::vector<double> x_right; 
@@ -179,6 +180,10 @@ void Raster::renderScene(std::vector<cube*> scene, SDL_Renderer* ren, std::array
     // for (const auto& cube: temp) {
         renderObject(cube->verticies, cube->tri, ren);
     }
+
+    for (auto& cube: cutFaces) {
+        delete cube;
+    }
 }
 void Raster::updateObj(cube& cub, std::array<double, 3> transform, double rotate, std::array<double, 3> scale){
     cub.transform(transform);
@@ -199,8 +204,8 @@ void Raster::clipWhole(const std::vector<cube*> scene, std::vector<cube*>& clipp
         for (const auto& vert: cub->verticies) {
             if (planes[0].signedDistance(vert) < 0 ||
               planes[1].signedDistance(vert) < 0 ||
-              planes[2].signedDistance(vert) < 0 || // this is weirdly unreadable and I really don't know how to not do that right now
-              planes[3].signedDistance(vert) < 0) { // but it is working and I don't want to break it
+              planes[2].signedDistance(vert) < 0 ||
+              planes[3].signedDistance(vert) < 0) {
                 clippedScene.push_back(cub);
                 break;
             }
@@ -215,13 +220,14 @@ void Raster::clipAll(const std::vector<cube*> scene, std::vector<cube*>& clipped
 }
 
 std::vector<cube*> Raster::cutTriangles(std::vector<cube*> clippedScene) {// i wanted this to be a copy so that it checks it every time but im not sure if that is working
-    for (const auto& cube: clippedScene) {
-        std::vector<triangle> fullScene = cube->tri;
+    std::vector<cube*> result;
+    for (const auto& sceneCube: clippedScene) {
+        cube* tempCube = new cube(*sceneCube); 
         std::vector<triangle> visibleTriangles;
-        for (const auto& tri: fullScene) {
-            point a = cube->verticies[tri.verts[0]];
-            point b = cube->verticies[tri.verts[1]];
-            point c = cube->verticies[tri.verts[2]];
+        for (const auto& tri: tempCube->tri) {
+            point a = tempCube->verticies[tri.verts[0]];
+            point b = tempCube->verticies[tri.verts[1]];
+            point c = tempCube->verticies[tri.verts[2]];
             point ab = {b.x-a.x, b.y-a.y, b.z-a.z};
             point ac = {c.x-a.x,c.y-a.y,c.z-a.z};
             point n = ab.cross(ab, ac);
@@ -239,9 +245,10 @@ std::vector<cube*> Raster::cutTriangles(std::vector<cube*> clippedScene) {// i w
                 }
             }
         } 
-        cube->tri = visibleTriangles;
+        tempCube->tri = visibleTriangles;
+        result.push_back(tempCube);
     }
-    return clippedScene;  // TODO figure ouot how to return the correct thing
+    return result;  // TODO figure ouot how to return the correct thing
 }
 
 

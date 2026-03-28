@@ -28,6 +28,7 @@ struct cube {
     cube(const cube& other);
     std::vector<point> verticies;
     std::vector<triangle> tri;
+    std::vector<triangle> originalTri;
     std::array<double, 3> currT;
     std::array<double, 3> currS;
     double currR; 
